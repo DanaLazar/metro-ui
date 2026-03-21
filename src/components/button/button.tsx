@@ -27,12 +27,14 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      data-variant={variant}
+      data-size={size}
       className={clsx(
         styles.button,
         styles[`button--${variant}`],
+        styles[`button--${size}`],
         {
           [styles["button--disabled"]]: disabled,
-          [styles["button--lg"]]: size === "lg",
         },
         className,
       )}
