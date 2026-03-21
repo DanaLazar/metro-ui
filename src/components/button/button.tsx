@@ -1,24 +1,45 @@
-import type { ReactNode } from 'react'
-import styles from './button.module.sass'
+import styles from "./button.module.sass";
+import clsx from "clsx";
 
-type ButtonSize = 'small' | 'medium' | 'large'
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "dark"
+  | "ghost";
 
-type ButtonProps = Readonly<{
-  primary?: boolean
-  size?: ButtonSize
-  label: string
-  onClick?: () => void
-  children?: ReactNode
-}> 
-
-export const Button = (props: ButtonProps) => {
-  const className = [styles.button, props.primary ? styles.primary : '', props.size ? styles[props.size] : '']
-    .filter(Boolean)
-    .join(' ')
-
-  return (
-    <button className={className} onClick={props.onClick}>
-      {props.label ?? props.children}
-    </button>
-  )
+export interface ButtonProps {
+  children?: React.ReactNode;
+  variant?: ButtonVariant;
+  disabled?: boolean;
+  size?: "sm" | "md" | "lg";
+  onClick?: () => void;
+  className?: string;
 }
+
+export const Button = ({
+  children,
+  variant = "primary",
+  disabled,
+  size = "md",
+  className,
+  ...props
+}: ButtonProps) => {
+  return (
+    <button
+      className={clsx(
+        styles.button,
+        styles[`button--${variant}`],
+        {
+          [styles["button--disabled"]]: disabled,
+          [styles["button--lg"]]: size === "lg",
+        },
+        className,
+      )}
+      disabled={disabled}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
