@@ -1,5 +1,6 @@
 import React from "react";
-import "./InputWithAction.sass";
+import { Button } from "../button/button";
+import styles from "./InputWithAction.module.sass";
 
 export interface InputWithActionProps {
   value: string;
@@ -29,29 +30,30 @@ export const InputWithAction: React.FC<InputWithActionProps> = ({
   type = "text",
 }) => {
   return (
-    <div className="input-with-action">
-      {label && <label className="iwa-label">{label}</label>}
-      <div className="iwa-input-row">
+    <div className={styles["input-with-action"]}>
+      {label && <label className={styles["iwa-label"]}>{label}</label>}
+      <div className={styles["iwa-input-row"]}>
         <input
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           autoFocus={autoFocus}
-          className="iwa-input"
+          className={styles["iwa-input"]}
         />
         {showButtons && onButtonClick && buttonLabel && (
-          <button onClick={onButtonClick} className="iwa-button primary">
+          <Button onClick={onButtonClick} variant="primary" size="md">
             {buttonLabel}
-          </button>
+          </Button>
         )}
         {showButtons && secondaryButtonLabel && onSecondaryButtonClick && (
-          <button
+          <Button
             onClick={onSecondaryButtonClick}
-            className="iwa-button secondary"
+            variant="secondary"
+            size="md"
           >
             {secondaryButtonLabel}
-          </button>
+          </Button>
         )}
       </div>
     </div>

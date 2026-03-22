@@ -48,7 +48,7 @@ describe("InputWithAction Component", () => {
     );
     const button = screen.getByText("Save");
     expect(button).toBeInTheDocument();
-    expect(button).toHaveClass("primary");
+    expect(button).toHaveAttribute("data-variant", "primary");
   });
 
   it("calls onButtonClick when primary button is clicked", async () => {

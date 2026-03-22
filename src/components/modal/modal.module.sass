@@ -1,0 +1,88 @@
+@use '../../styles/variables' as *
+
+.metro-modal-overlay
+  position: fixed
+  inset: 0
+  background-color: $color-overlay
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 9999
+
+.metro-modal
+  background-color: $color-white
+  width: 100%
+  max-width: 520px 
+  border-radius: $radius-sm
+  box-shadow: 0 10px 25px $color-shadow
+  overflow: hidden
+  display: flex
+  flex-direction: column
+
+// HEADER
+.metro-modal-header
+  background-color: $color-dark
+  color: $color-white
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: $spacing-lg 24px
+
+  h2
+    font-size: 20px
+    font-weight: 600
+    margin: 0
+
+  button
+    background: none
+    border: none
+    font-size: 20px
+    cursor: pointer
+    color: $color-white
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &:hover
+      opacity: 0.8
+
+// CONTENT
+.metro-modal-content
+  padding: 24px
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+// BOX gri pentru expresie
+.expression-box
+  background-color: $color-border-light
+  border: 1px solid $color-border
+  padding: $spacing-lg
+  border-radius: 2px
+
+  p
+    margin: 0
+    color: $color-text-secondary
+
+  strong
+    display: block
+    margin-top: $spacing-sm
+    font-size: 18px
+    color: $color-text
+
+// LABEL input
+.input-label
+  font-size: 14px
+  color: $color-text-secondary
+  margin-bottom: 6px
+
+// FOOTER / BUTTONS
+.metro-modal-buttons
+  display: flex
+  justify-content: space-between
+  padding: $spacing-lg 24px
+  border-top: 1px solid $color-border
+  gap: $spacing-md
+
+  button
+    flex: 1
