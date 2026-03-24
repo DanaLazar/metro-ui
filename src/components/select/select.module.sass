@@ -1,0 +1,41 @@
+@use '../../styles/variables' as *
+
+.select
+  appearance: none
+  padding: 0 $spacing-lg
+  height: $control-height-sm
+  border-radius: $radius-sm
+  border: 1px solid $color-border
+  font-size: 14px
+  cursor: pointer
+  transition: $transition
+  background-color: $color-white
+
+  &:focus
+    outline: none
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.2)
+
+  &--primary
+    border-color: $color-primary
+
+  &--secondary
+    border-color: $color-border
+    background: #f9fafb
+
+  &--ghost
+    background: transparent
+    border: 1px solid rgba(255,255,255,0.3)
+    color: $color-white
+
+  &--disabled
+    opacity: 0.5
+    cursor: not-allowed
+
+  &--sm
+    height: $control-height-sm
+
+  &--md
+    height: $control-height-md
+
+  &--lg
+    height: $control-height-lg

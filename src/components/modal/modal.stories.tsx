@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Modal } from "./modal";
-import { InputWithAction } from "../input/InputWithAction";
 import { Button } from "../button/button";
+import { Input } from "../input/input";
 
 const meta = {
   title: "Components/Modal",
@@ -42,7 +42,6 @@ export const SaveModal: Story = {
     title: "Salvează Expresia",
     onClose: () => console.log("Modal closed"),
     children: <></>,
-    actions: <></>,
   },
   render: (args) => {
     const [label, setLabel] = useState("");
@@ -64,11 +63,10 @@ export const SaveModal: Story = {
           <strong>655555555666558 ÷ 9 = 72839506185173.11</strong>
         </div>
 
-        <InputWithAction
+        <Input
           value={label}
           onChange={setLabel}
           placeholder="Introduceți o etichetă..."
-          showButtons={false}
         />
       </Modal>
     );
@@ -81,7 +79,6 @@ export const ClearModal: Story = {
     title: "Confirmă Ștergerea",
     onClose: () => console.log("Modal closed"),
     children: <></>,
-    actions: <></>,
   },
   render: (args) => (
     <Modal

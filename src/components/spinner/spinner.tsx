@@ -14,6 +14,7 @@ export const Spinner = ({
 }: SpinnerProps) => {
   return (
     <div
+      data-testid="spinner"
       data-size={size}
       data-variant={variant}
       className={clsx(

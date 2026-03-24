@@ -1,0 +1,26 @@
+@use '../../styles/variables' as *
+
+.input
+  padding: 0 1rem
+  border-radius: $radius-sm
+  border: 2px solid $color-border
+  font-size: 1rem
+  outline: none
+  transition: $transition
+
+  &:focus
+    border-color: $color-primary
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.2)
+
+  &--disabled
+    opacity: 0.6
+    cursor: not-allowed
+
+  &--sm
+    height: $control-height-sm
+
+  &--md
+    height: $control-height-md
+
+  &--lg
+    height: $control-height-lg

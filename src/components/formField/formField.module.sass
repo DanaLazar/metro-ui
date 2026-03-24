@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *
+
+.wrapper
+  display: flex
+  flex-direction: column
+  gap: 4px
+  align-items: stretch
+  & input
+    flex: 1
+
+.label
+  font-size: 0.875rem
+  font-weight: 500
+  color: $color-text-secondary
+
+.control
+  display: flex
+  align-items: stretch
+
+  & > *
+    display: flex
+    align-items: center
+
+  &--error input
+    border-color: $color-danger
+
+.message
+  font-size: 0.75rem
+  color: $color-text-secondary
+
+.error
+  color: $color-danger
