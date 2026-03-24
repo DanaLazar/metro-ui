@@ -101,3 +101,19 @@ export const Disabled: Story = {
     children: "Disabled Button",
   },
 };
+
+export const GhostLoading: Story = {
+  args: {
+    variant: "ghost",
+    isLoading: true,
+    children: "Ghost",
+  },
+};
+
+export const DarkLoadingWithText: Story = {
+  args: {
+    variant: "dark",
+    isLoading: true,
+    children: "Loading...",
+  },
+};

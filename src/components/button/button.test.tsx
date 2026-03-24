@@ -40,4 +40,11 @@ describe("Button Component", () => {
     button = screen.getByRole("button");
     expect(button).toHaveAttribute("data-size", "lg");
   });
+
+  it("shows spinner when loading", () => {
+    render(<Button isLoading>Click</Button>);
+    const button = screen.getByRole("button");
+
+    expect(button).toBeDisabled();
+  });
 });

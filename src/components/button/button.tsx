@@ -1,5 +1,6 @@
 import styles from "./button.module.sass";
 import clsx from "clsx";
+import { Spinner } from "../spinner/spinner";
 
 export type ButtonVariant =
   | "primary"
@@ -13,6 +14,8 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
+  isLoading?: boolean;
+  loadingText?: string;
   onClick?: () => void;
   className?: string;
 }
@@ -22,9 +25,17 @@ export const Button = ({
   variant = "primary",
   disabled,
   size = "md",
+  isLoading = false,
+  loadingText,
   className,
   ...props
 }: ButtonProps) => {
+  const isDisabled = disabled || isLoading;
+  const getSpinnerVariant = () => {
+    if (variant === "dark") return "white";
+    if (variant === "ghost") return "primary";
+    return "white";
+  };
   return (
     <button
       data-variant={variant}
@@ -34,14 +45,22 @@ export const Button = ({
         styles[`button--${variant}`],
         styles[`button--${size}`],
         {
-          [styles["button--disabled"]]: disabled,
+          [styles["button--disabled"]]: isDisabled,
+          [styles["button--loading"]]: isLoading,
         },
         className,
       )}
-      disabled={disabled}
+      disabled={isDisabled}
       {...props}
     >
-      {children}
+      {isLoading ? (
+        <span className={styles.loadingContent}>
+          <Spinner size="sm" variant={getSpinnerVariant()} />
+          <span>{loadingText || children}</span>
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 };
