@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Keypad from "./keypad";
+import { Keypad } from "./keypad";
 
 const meta: Meta<typeof Keypad> = {
   title: "Components/Keypad",
@@ -14,6 +14,9 @@ export const Default: Story = {
   args: {
     onNumberClick: (v) => console.log("number:", v),
     onClear: () => console.log("clear"),
-    onSubmit: () => console.log("submit"),
+    onOperationClick: (label) => console.log("operation:", label),
+    onDecimalClick: () => console.log("decimal"),
+    onEqualsClick: () => console.log("equals"),
+    onBackspaceClick: () => console.log("backspace"),
   },
 };

@@ -67,6 +67,7 @@ export const SaveModal: Story = {
           value={label}
           onChange={setLabel}
           placeholder="Introduceți o etichetă..."
+          id="save-modal-input"
         />
       </Modal>
     );

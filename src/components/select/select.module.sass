@@ -5,26 +5,26 @@
   padding: 0 $spacing-lg
   height: $control-height-sm
   border-radius: $radius-sm
-  border: 1px solid $color-border
-  font-size: 14px
+  border: $border-width solid $color-border
+  font-size: $font-size-sm
   cursor: pointer
   transition: $transition
   background-color: $color-white
 
   &:focus
     outline: none
-    box-shadow: 0 0 0 2px rgba($color-primary, 0.2)
+    box-shadow: 0 0 0 $focus-ring-width rgba($color-primary, 0.2)
 
   &--primary
     border-color: $color-primary
 
   &--secondary
     border-color: $color-border
-    background: #f9fafb
+    background: $color-border-light
 
   &--ghost
     background: transparent
-    border: 1px solid rgba(255,255,255,0.3)
+    border: $border-width solid rgba($color-white, 0.3)
     color: $color-white
 
   &--disabled

@@ -2,7 +2,7 @@
 
 .spinner
   border-radius: 50%
-  border: 3px solid transparent
+  border: $spinner-border-width solid transparent
   border-top-color: currentColor
   animation: spin 0.8s linear infinite
 
@@ -16,16 +16,16 @@
     color: $color-white
 
   &--sm
-    width: 16px
-    height: 16px
+    width: $spinner-size-sm
+    height: $spinner-size-sm
 
   &--md
-    width: 24px
-    height: 24px
+    width: $spinner-size-md
+    height: $spinner-size-md
 
   &--lg
-    width: 32px
-    height: 32px
+    width: $spinner-size-lg
+    height: $spinner-size-lg
 
 @keyframes spin
   from

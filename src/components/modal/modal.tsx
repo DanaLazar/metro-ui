@@ -17,14 +17,20 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   actions,
 }) => {
+  const titleId = React.useId();
   if (!isOpen) return null;
 
   return (
     <div className={styles["metro-modal-overlay"]}>
-      <div className={styles["metro-modal"]}>
+      <div
+        className={styles["metro-modal"]}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+      >
         <div className={styles["metro-modal-header"]}>
-          <h2>{title}</h2>
-          <Button variant="ghost" onClick={onClose}>
+          <h2 id={titleId}>{title}</h2>
+          <Button variant="ghost" onClick={onClose} aria-label="Close dialog">
             ✕
           </Button>
         </div>

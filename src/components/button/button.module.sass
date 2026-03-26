@@ -12,11 +12,11 @@
   transition: $transition
   cursor: pointer
   border: none
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1)
+  box-shadow: $shadow-button
   
   &:hover
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15)
-    transform: translateY(-1px)
+    box-shadow: $shadow-button-hover
+    transform: translateY(-$lift-y)
 
   &:active
     transform: scale(0.95)
@@ -30,11 +30,11 @@
 
   &--secondary
     background: transparent
-    border: 2px solid $color-border
+    border: $border-width-md solid $color-border
     color: $color-text
 
     &:hover
-      background: #f9fafb
+      background: $color-border-light
 
   &--danger
     background: $color-danger
@@ -52,11 +52,11 @@
 
   &--ghost
     background: transparent
-    border: 2px solid rgba(255, 255, 255, 0.3)
+    border: $border-width-md solid rgba($color-white, 0.3)
     color: $color-white
 
     &:hover
-      background: rgba(255, 255, 255, 0.1)
+      background: rgba($color-white, 0.1)
 
   &--sm
     height: $control-height-sm
@@ -92,11 +92,11 @@
 
 .spinner
   border-radius: 50%
-  border: 2px solid transparent
+  border: $border-width-md solid transparent
   border-top-color: currentColor
   animation: spin 0.8s linear infinite
 
 .loadingContent
   display: flex
   align-items: center
-  gap: 8px
+  gap: $spacing-sm

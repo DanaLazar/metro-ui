@@ -23,7 +23,12 @@ export const SingleAction: Story = {
 
     return (
       <InputWithAction>
-        <Input value={value} onChange={setValue} placeholder="Search..." />
+        <Input
+          value={value}
+          onChange={setValue}
+          placeholder="Search..."
+          id="single-action-input"
+        />
         <Button onClick={() => alert(value)}>Search</Button>
       </InputWithAction>
     );
@@ -44,9 +49,9 @@ export const WithFormField: Story = {
     };
 
     return (
-      <FormField label="Search" error={error}>
+      <FormField label="Search" error={error} id="with-form-field-input">
         <InputWithAction>
-          <Input value={value} onChange={setValue} />
+          <Input value={value} onChange={setValue} id="with-form-field-input" />
           <Button onClick={handleSearch}>Search</Button>
         </InputWithAction>
       </FormField>
@@ -68,9 +73,13 @@ export const Confirmation: Story = {
     };
 
     return (
-      <FormField label="Type DELETE to confirm" error={error}>
+      <FormField
+        label="Type DELETE to confirm"
+        error={error}
+        id="confirmation-input"
+      >
         <InputWithAction>
-          <Input value={value} onChange={setValue} />
+          <Input value={value} onChange={setValue} id="confirmation-input" />
 
           <Button variant="secondary" onClick={() => setValue("")}>
             Cancel
@@ -98,7 +107,7 @@ export const LoadingAction: Story = {
 
     return (
       <InputWithAction>
-        <Input value={value} onChange={setValue} />
+        <Input value={value} onChange={setValue} id="loading-action-input" />
         <Button isLoading={loading} onClick={handleClick}>
           Submit
         </Button>

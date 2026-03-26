@@ -16,49 +16,81 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
+  args: {
+    id: "formField-default",
+  },
+  render: (args) => {
     const [value, setValue] = useState("");
 
     return (
-      <FormField label="Name">
-        <Input value={value} onChange={setValue} />
+      <FormField {...args} label="Name">
+        <Input
+          id="formField-default-input"
+          value={value}
+          onChange={(v) => setValue(v)}
+        />
       </FormField>
     );
   },
 };
 
 export const Error: Story = {
-  render: () => {
+  args: {
+    id: "formField-error",
+  },
+  render: (args) => {
     const [value, setValue] = useState("");
 
     return (
-      <FormField label="Email" error="Invalid email">
-        <Input value={value} onChange={setValue} />
+      <FormField {...args} label="Email" error="Invalid email">
+        <Input
+          id="formField-error-input"
+          value={value}
+          onChange={(v) => setValue(v)}
+        />
       </FormField>
     );
   },
 };
 
 export const HelperText: Story = {
-  render: () => {
+  args: {
+    id: "formField-helperText",
+  },
+  render: (args) => {
     const [value, setValue] = useState("");
 
     return (
-      <FormField label="Password" helperText="Must be at least 8 characters">
-        <Input value={value} onChange={setValue} />
+      <FormField
+        {...args}
+        label="Password"
+        helperText="Must be at least 8 characters"
+      >
+        <Input
+          id="formField-helperText-input"
+          value={value}
+          onChange={(v) => setValue(v)}
+        />
       </FormField>
     );
   },
 };
 
 export const WithAction: Story = {
-  render: () => {
+  args: {
+    id: "formField-withAction",
+  },
+  render: (args) => {
     const [value, setValue] = useState("");
 
     return (
-      <FormField label="Search">
+      <FormField {...args} label="Search">
         <div style={{ display: "flex", gap: "8px" }}>
-          <Input value={value} onChange={setValue} />
+          <Input
+            id="formField-withAction-input"
+            value={value}
+            onChange={(v) => setValue(v)}
+          />
         </div>
       </FormField>
     );

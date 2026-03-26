@@ -1,16 +1,23 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import Keypad from "./keypad";
+import { Keypad } from "./keypad";
 
 describe("Keypad", () => {
   it("calls onNumberClick", () => {
     const onNumberClick = vi.fn();
+    const onOperationClick = vi.fn();
+    const onDecimalClick = vi.fn();
+    const onEqualsClick = vi.fn();
+    const onBackspaceClick = vi.fn();
 
     render(
       <Keypad
         onNumberClick={onNumberClick}
         onClear={() => {}}
-        onSubmit={() => {}}
+        onOperationClick={onOperationClick}
+        onDecimalClick={() => onDecimalClick()}
+        onEqualsClick={() => onEqualsClick()}
+        onBackspaceClick={() => onBackspaceClick()}
       />,
     );
 
@@ -21,29 +28,24 @@ describe("Keypad", () => {
 
   it("calls onClear", () => {
     const onClear = vi.fn();
+    const onOperationClick = vi.fn();
+    const onDecimalClick = vi.fn();
+    const onEqualsClick = vi.fn();
+    const onBackspaceClick = vi.fn();
 
     render(
-      <Keypad onNumberClick={() => {}} onClear={onClear} onSubmit={() => {}} />,
+      <Keypad
+        onNumberClick={() => {}}
+        onClear={onClear}
+        onOperationClick={onOperationClick}
+        onDecimalClick={() => onDecimalClick()}
+        onEqualsClick={() => onEqualsClick()}
+        onBackspaceClick={() => onBackspaceClick()}
+      />,
     );
 
     fireEvent.click(screen.getByText("C"));
 
     expect(onClear).toHaveBeenCalled();
-  });
-
-  it("calls onSubmit", () => {
-    const onSubmit = vi.fn();
-
-    render(
-      <Keypad
-        onNumberClick={() => {}}
-        onClear={() => {}}
-        onSubmit={onSubmit}
-      />,
-    );
-
-    fireEvent.click(screen.getByText("OK"));
-
-    expect(onSubmit).toHaveBeenCalled();
   });
 });

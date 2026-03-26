@@ -3,14 +3,14 @@
 .input
   padding: 0 1rem
   border-radius: $radius-sm
-  border: 2px solid $color-border
+  border: $border-width-md solid $color-border
   font-size: 1rem
   outline: none
   transition: $transition
 
   &:focus
     border-color: $color-primary
-    box-shadow: 0 0 0 2px rgba($color-primary, 0.2)
+    box-shadow: 0 0 0 $focus-ring-width rgba($color-primary, 0.2)
 
   &--disabled
     opacity: 0.6

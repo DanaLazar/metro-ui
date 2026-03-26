@@ -12,6 +12,7 @@ export interface SelectProps {
   options: SelectOption[];
   value?: string;
   onChange?: (value: string) => void;
+  ariaLabel?: string;
   variant?: SelectVariant;
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
@@ -22,6 +23,7 @@ export const Select = ({
   options,
   value,
   onChange,
+  ariaLabel,
   variant = "primary",
   size = "md",
   disabled,
@@ -29,7 +31,7 @@ export const Select = ({
 }: SelectProps) => {
   return (
     <select
-      aria-label="Select"
+      aria-label={ariaLabel ?? "Select"}
       data-variant={variant}
       data-size={size}
       className={clsx(

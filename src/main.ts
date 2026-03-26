@@ -5,3 +5,4 @@ export { Spinner } from "./components/spinner/spinner";
 export { Select } from "./components/select/select";
 export { Input } from "./components/input/input";
 export { FormField } from "./components/formField/formField";
+export { Keypad } from "./components/keypad/keypad";

@@ -3,22 +3,18 @@ import styles from "./keypad.module.sass";
 
 export type KeypadButton = {
   label: string;
-  type:
-    | "number"
-    | "operation"
-    | "clear"
-    | "decimal"
-    | "equals"
-    | "backspace"
-    | "submit";
+  type: "number" | "operation" | "clear" | "decimal" | "equals" | "backspace";
   value?: string;
   span?: number;
 };
 
 type KeypadProps = {
   onNumberClick: (value: string) => void;
+  onOperationClick: (label: string) => void;
   onClear: () => void;
-  onSubmit: () => void;
+  onDecimalClick: () => void;
+  onEqualsClick: () => void;
+  onBackspaceClick: () => void;
 };
 
 const buttons: readonly KeypadButton[] = [
@@ -36,7 +32,7 @@ const buttons: readonly KeypadButton[] = [
   { label: "1", type: "number", value: "1" },
   { label: "2", type: "number", value: "2" },
   { label: "3", type: "number", value: "3" },
-  { label: "+", type: "operation", value: "4" },
+  { label: "+", type: "operation" },
   { label: "0", type: "number", value: "0", span: 2 },
   { label: ".", type: "decimal" },
   { label: "=", type: "equals" },
@@ -56,17 +52,33 @@ const getVariant = (type: KeypadButton["type"]) => {
   }
 };
 
-const Keypad = ({ onNumberClick, onClear, onSubmit }: KeypadProps) => {
+export const Keypad = ({
+  onNumberClick,
+  onClear,
+  onOperationClick,
+  onDecimalClick,
+  onEqualsClick,
+  onBackspaceClick,
+}: KeypadProps) => {
   const handleClick = (btn: KeypadButton) => {
     switch (btn.type) {
       case "number":
         onNumberClick(btn.value!);
         break;
+      case "operation":
+        onOperationClick(btn.label!);
+        break;
       case "clear":
         onClear();
         break;
-      case "submit":
-        onSubmit();
+      case "decimal":
+        onDecimalClick();
+        break;
+      case "equals":
+        onEqualsClick();
+        break;
+      case "backspace":
+        onBackspaceClick();
         break;
     }
   };
@@ -87,5 +99,3 @@ const Keypad = ({ onNumberClick, onClear, onSubmit }: KeypadProps) => {
     </div>
   );
 };
-
-export default Keypad;

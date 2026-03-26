@@ -6,7 +6,7 @@ import styles from "./formField.module.sass";
 describe("FormField", () => {
   it("renders label", () => {
     render(
-      <FormField label="Email">
+      <FormField label="Email" id="email">
         <input />
       </FormField>,
     );
@@ -16,7 +16,7 @@ describe("FormField", () => {
 
   it("renders children", () => {
     render(
-      <FormField>
+      <FormField id="test">
         <input placeholder="test" />
       </FormField>,
     );
@@ -26,7 +26,7 @@ describe("FormField", () => {
 
   it("renders error message", () => {
     render(
-      <FormField error="Required">
+      <FormField error="Required" id="test">
         <input />
       </FormField>,
     );
@@ -36,7 +36,7 @@ describe("FormField", () => {
 
   it("renders helper text when no error", () => {
     render(
-      <FormField helperText="Helpful info">
+      <FormField helperText="Helpful info" id="test">
         <input />
       </FormField>,
     );
@@ -46,7 +46,7 @@ describe("FormField", () => {
 
   it("applies error class when error exists", () => {
     render(
-      <FormField error="Error">
+      <FormField error="Error" id="test">
         <input data-testid="input" />
       </FormField>,
     );

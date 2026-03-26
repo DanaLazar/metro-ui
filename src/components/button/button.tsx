@@ -9,15 +9,16 @@ export type ButtonVariant =
   | "dark"
   | "ghost";
 
-export interface ButtonProps {
+export interface ButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  "children" | "onClick"
+> {
   children?: React.ReactNode;
   variant?: ButtonVariant;
-  disabled?: boolean;
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   loadingText?: string;
-  onClick?: () => void;
-  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Button = ({
@@ -28,6 +29,7 @@ export const Button = ({
   isLoading = false,
   loadingText,
   className,
+  onClick,
   ...props
 }: ButtonProps) => {
   const isDisabled = disabled || isLoading;
@@ -51,6 +53,7 @@ export const Button = ({
         className,
       )}
       disabled={isDisabled}
+      onClick={onClick}
       {...props}
     >
       {isLoading ? (
