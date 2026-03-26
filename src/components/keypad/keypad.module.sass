@@ -1,0 +1,12 @@
+@use '../../styles/variables' as *
+
+.keypad
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  gap: 8px
+
+  &__btn
+    font-size: 18px
+
+  .col-span-2
+    grid-column: span 2

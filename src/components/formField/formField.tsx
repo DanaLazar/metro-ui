@@ -5,7 +5,8 @@ export interface FormFieldProps {
   label?: string;
   error?: string;
   helperText?: string;
-  children?: React.ReactNode;
+  children?: React.ReactElement;
+  id: string;
 }
 
 export const FormField = ({
@@ -13,10 +14,15 @@ export const FormField = ({
   error,
   helperText,
   children,
+  id,
 }: FormFieldProps) => {
   return (
     <div className={styles.wrapper}>
-      {label && <label className={styles.label}>{label}</label>}
+      {label && (
+        <label htmlFor={id} className={styles.label}>
+          {label}
+        </label>
+      )}
 
       <div
         className={clsx(styles.control, {

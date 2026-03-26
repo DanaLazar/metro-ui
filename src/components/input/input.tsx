@@ -2,6 +2,7 @@ import styles from "./input.module.sass";
 import clsx from "clsx";
 
 export interface InputProps {
+  id: string;
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
@@ -12,6 +13,7 @@ export interface InputProps {
 }
 
 export const Input = ({
+  id,
   value,
   onChange,
   placeholder,
@@ -22,6 +24,7 @@ export const Input = ({
 }: InputProps) => {
   return (
     <input
+      id={id}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}

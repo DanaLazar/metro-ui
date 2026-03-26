@@ -29,6 +29,7 @@ export const Select = ({
 }: SelectProps) => {
   return (
     <select
+      aria-label="Select"
       data-variant={variant}
       data-size={size}
       className={clsx(

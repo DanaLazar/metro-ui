@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./modal.module.sass";
+import { Button } from "../button/button";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -23,7 +24,9 @@ export const Modal: React.FC<ModalProps> = ({
       <div className={styles["metro-modal"]}>
         <div className={styles["metro-modal-header"]}>
           <h2>{title}</h2>
-          <button onClick={onClose}>✕</button>
+          <Button variant="ghost" onClick={onClose}>
+            ✕
+          </Button>
         </div>
 
         <div className={styles["metro-modal-content"]}>{children}</div>
