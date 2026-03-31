@@ -1,4 +1,4 @@
-import styles from "./inputWithAction.module.sass";
+import styles from "@/components/inputWithActions/inputWithAction.module.sass";
 import clsx from "clsx";
 
 export interface InputWithActionProps {

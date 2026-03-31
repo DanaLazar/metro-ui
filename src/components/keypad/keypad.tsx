@@ -1,5 +1,5 @@
-import { Button } from "../button/button";
-import styles from "./keypad.module.sass";
+import { Button } from "@/components/button/button";
+import styles from "@/components/keypad/keypad.module.sass";
 
 export type KeypadButton = {
   label: string;
@@ -9,12 +9,7 @@ export type KeypadButton = {
 };
 
 type KeypadProps = {
-  onNumberClick: (value: string) => void;
-  onOperationClick: (label: string) => void;
-  onClear: () => void;
-  onDecimalClick: () => void;
-  onEqualsClick: () => void;
-  onBackspaceClick: () => void;
+  onKeyPress: (key: KeypadButton) => void;
 };
 
 const buttons: readonly KeypadButton[] = [
@@ -52,46 +47,16 @@ const getVariant = (type: KeypadButton["type"]) => {
   }
 };
 
-export const Keypad = ({
-  onNumberClick,
-  onClear,
-  onOperationClick,
-  onDecimalClick,
-  onEqualsClick,
-  onBackspaceClick,
-}: KeypadProps) => {
-  const handleClick = (btn: KeypadButton) => {
-    switch (btn.type) {
-      case "number":
-        onNumberClick(btn.value!);
-        break;
-      case "operation":
-        onOperationClick(btn.label!);
-        break;
-      case "clear":
-        onClear();
-        break;
-      case "decimal":
-        onDecimalClick();
-        break;
-      case "equals":
-        onEqualsClick();
-        break;
-      case "backspace":
-        onBackspaceClick();
-        break;
-    }
-  };
-
+export const Keypad = ({ onKeyPress }: KeypadProps) => {
   return (
     <div className={styles["keypad"]}>
-      {buttons.map((button, index) => (
+      {buttons.map((button) => (
         <Button
-          key={index}
+          key={button.label}
           variant={getVariant(button.type)}
           size="md"
           className={button.span === 2 ? styles["col-span-2"] : ""}
-          onClick={() => handleClick(button)}
+          onClick={() => onKeyPress(button)}
         >
           {button.label}
         </Button>

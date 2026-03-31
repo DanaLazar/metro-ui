@@ -1,44 +1,37 @@
-import styles from "./input.module.sass";
+import { forwardRef } from "react";
+import styles from "@/components/input/input.module.sass";
 import clsx from "clsx";
 
-export interface InputProps {
-  id: string;
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  type?: "text" | "email" | "password" | "number";
-  disabled?: boolean;
+export interface InputProps extends Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> {
   size?: "sm" | "md" | "lg";
-  className?: string;
+  error?: boolean;
 }
 
-export const Input = ({
-  id,
-  value,
-  onChange,
-  placeholder,
-  type = "text",
-  disabled,
-  size = "md",
-  className,
-}: InputProps) => {
-  return (
-    <input
-      id={id}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      type={type}
-      disabled={disabled}
-      data-size={size}
-      className={clsx(
-        styles.input,
-        styles[`input--${size}`],
-        {
-          [styles["input--disabled"]]: disabled,
-        },
-        className,
-      )}
-    />
-  );
-};
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    { size = "md", className, disabled, error, value, onChange, ...rest },
+    ref,
+  ) => {
+    return (
+      <input
+        ref={ref}
+        value={value}
+        onChange={onChange}
+        data-size={size}
+        aria-invalid={error || undefined}
+        className={clsx(
+          styles.input,
+          styles[`input--${size}`],
+          {
+            [styles["input--disabled"]]: disabled,
+          },
+          className,
+        )}
+        {...rest}
+      />
+    );
+  },
+);

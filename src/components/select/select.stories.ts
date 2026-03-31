@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Select } from "./select";
+import { Select } from "@/components/select/select";
 
 const options = [
   { label: "Option 1", value: "1" },

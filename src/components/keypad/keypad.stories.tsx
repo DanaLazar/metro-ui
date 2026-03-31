@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Keypad } from "./keypad";
+import { Keypad, type KeypadButton } from "@/components/keypad/keypad";
 
 const meta: Meta<typeof Keypad> = {
   title: "Components/Keypad",
@@ -12,11 +12,27 @@ type Story = StoryObj<typeof Keypad>;
 
 export const Default: Story = {
   args: {
-    onNumberClick: (v) => console.log("number:", v),
-    onClear: () => console.log("clear"),
-    onOperationClick: (label) => console.log("operation:", label),
-    onDecimalClick: () => console.log("decimal"),
-    onEqualsClick: () => console.log("equals"),
-    onBackspaceClick: () => console.log("backspace"),
+    onKeyPress: (key: KeypadButton) => {
+      switch (key.type) {
+        case "number":
+          console.log("number:", key.value);
+          break;
+        case "operation":
+          console.log("operation:", key.label);
+          break;
+        case "decimal":
+          console.log("decimal");
+          break;
+        case "equals":
+          console.log("equals");
+          break;
+        case "clear":
+          console.log("clear");
+          break;
+        case "backspace":
+          console.log("backspace");
+          break;
+      }
+    },
   },
 };

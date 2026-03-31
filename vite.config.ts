@@ -9,10 +9,21 @@ import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+    },
+  },
   plugins: [
     react(),
     dts({
       tsconfigPath: "./tsconfig.app.json",
+      exclude: [
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.stories.tsx",
+        "**/*.stories.ts",
+      ],
     }),
     libInjectCss(),
   ],
@@ -27,7 +38,14 @@ export default defineConfig({
       external: ["react", "react/jsx-runtime"],
       input: Object.fromEntries(
         glob
-          .sync("src/**/*.{ts,tsx}")
+          .sync("src/**/*.{ts,tsx}", {
+            ignore: [
+              "**/*.test.ts",
+              "**/*.test.tsx",
+              "**/*.stories.tsx",
+              "**/*.stories.ts",
+            ],
+          })
           .map((file) => [
             relative("src", file.slice(0, file.length - extname(file).length)),
             fileURLToPath(new URL(file, import.meta.url)),

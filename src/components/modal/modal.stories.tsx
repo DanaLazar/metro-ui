@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Modal } from "./modal";
-import { Button } from "../button/button";
-import { Input } from "../input/input";
+import { Modal } from "@/components/modal/modal";
+import { Button } from "@/components/button/button";
+import { Input } from "@/components/input/input";
 
 const meta = {
   title: "Components/Modal",
@@ -65,7 +65,7 @@ export const SaveModal: Story = {
 
         <Input
           value={label}
-          onChange={setLabel}
+          onChange={(e) => setLabel(e.target.value)}
           placeholder="Introduceți o etichetă..."
           id="save-modal-input"
         />

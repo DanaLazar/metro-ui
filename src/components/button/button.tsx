@@ -1,6 +1,6 @@
-import styles from "./button.module.sass";
+import styles from "@/components/button/button.module.sass";
 import clsx from "clsx";
-import { Spinner } from "../spinner/spinner";
+import { Spinner } from "@/components/spinner/spinner";
 
 export type ButtonVariant =
   | "primary"
@@ -11,7 +11,7 @@ export type ButtonVariant =
 
 export interface ButtonProps extends Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
-  "children" | "onClick"
+  "children"
 > {
   children?: React.ReactNode;
   variant?: ButtonVariant;

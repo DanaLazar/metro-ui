@@ -1,4 +1,4 @@
-import styles from "./select.module.sass";
+import styles from "@/components/select/select.module.sass";
 import clsx from "clsx";
 
 export type SelectVariant = "primary" | "secondary" | "ghost";

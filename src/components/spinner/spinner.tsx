@@ -1,4 +1,4 @@
-import styles from "./spinner.module.sass";
+import styles from "@/components/spinner/spinner.module.sass";
 import clsx from "clsx";
 
 export interface SpinnerProps {

@@ -1,11 +1,16 @@
-import styles from "./formField.module.sass";
+import styles from "@/components/formField/formField.module.sass";
 import clsx from "clsx";
+import React from "react";
+
+type InputLikeProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  error?: boolean;
+};
 
 export interface FormFieldProps {
   label?: string;
   error?: string;
   helperText?: string;
-  children?: React.ReactElement;
+  children?: React.ReactElement<InputLikeProps>;
   id: string;
 }
 
@@ -16,6 +21,8 @@ export const FormField = ({
   children,
   id,
 }: FormFieldProps) => {
+  const messageId = `${id}-message`;
+
   return (
     <div className={styles.wrapper}>
       {label && (
@@ -29,11 +36,17 @@ export const FormField = ({
           [styles["control--error"]]: error,
         })}
       >
-        {children}
+        {children &&
+          React.cloneElement(children, {
+            id,
+            error: !!error,
+            "aria-describedby": error || helperText ? messageId : undefined,
+          })}
       </div>
 
       {(error || helperText) && (
         <span
+          id={messageId}
           className={clsx(styles.message, {
             [styles.error]: error,
           })}

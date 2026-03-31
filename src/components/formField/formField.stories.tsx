@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { FormField } from "./formField";
-import { Input } from "../input/input";
+import { FormField } from "@/components/formField/formField";
+import { Input } from "@/components/input/input";
 
 const meta = {
   title: "Components/FormField",
@@ -24,11 +24,7 @@ export const Default: Story = {
 
     return (
       <FormField {...args} label="Name">
-        <Input
-          id="formField-default-input"
-          value={value}
-          onChange={(v) => setValue(v)}
-        />
+        <Input value={value} onChange={(e) => setValue(e.target.value)} />
       </FormField>
     );
   },
@@ -43,11 +39,7 @@ export const Error: Story = {
 
     return (
       <FormField {...args} label="Email" error="Invalid email">
-        <Input
-          id="formField-error-input"
-          value={value}
-          onChange={(v) => setValue(v)}
-        />
+        <Input value={value} onChange={(e) => setValue(e.target.value)} />
       </FormField>
     );
   },
@@ -67,9 +59,9 @@ export const HelperText: Story = {
         helperText="Must be at least 8 characters"
       >
         <Input
-          id="formField-helperText-input"
+          type="password"
           value={value}
-          onChange={(v) => setValue(v)}
+          onChange={(e) => setValue(e.target.value)}
         />
       </FormField>
     );
@@ -86,11 +78,7 @@ export const WithAction: Story = {
     return (
       <FormField {...args} label="Search">
         <div style={{ display: "flex", gap: "8px" }}>
-          <Input
-            id="formField-withAction-input"
-            value={value}
-            onChange={(v) => setValue(v)}
-          />
+          <Input value={value} onChange={(e) => setValue(e.target.value)} />
         </div>
       </FormField>
     );

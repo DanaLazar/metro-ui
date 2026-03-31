@@ -1,6 +1,6 @@
 import { it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { InputWithAction } from "./inputWithAction";
+import { InputWithAction } from "@/components/inputWithActions/inputWithAction";
 
 it("renders children", () => {
   render(

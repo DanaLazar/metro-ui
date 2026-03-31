@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./modal.module.sass";
-import { Button } from "../button/button";
+import styles from "@/components/modal/modal.module.sass";
+import { Button } from "@/components/button/button";
 
 export interface ModalProps {
   isOpen: boolean;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { InputWithAction } from "./inputWithAction";
-import { FormField } from "../formField/formField";
-import { Input } from "../input/input";
-import { Button } from "../button/button";
+import { InputWithAction } from "@/components/inputWithActions/inputWithAction";
+import { FormField } from "@/components/formField/formField";
+import { Input } from "@/components/input/input";
+import { Button } from "@/components/button/button";
 
 const meta: Meta<typeof InputWithAction> = {
   title: "Components/inputWithAction",
@@ -25,7 +25,7 @@ export const SingleAction: Story = {
       <InputWithAction>
         <Input
           value={value}
-          onChange={setValue}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Search..."
           id="single-action-input"
         />
@@ -51,7 +51,11 @@ export const WithFormField: Story = {
     return (
       <FormField label="Search" error={error} id="with-form-field-input">
         <InputWithAction>
-          <Input value={value} onChange={setValue} id="with-form-field-input" />
+          <Input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            id="with-form-field-input"
+          />
           <Button onClick={handleSearch}>Search</Button>
         </InputWithAction>
       </FormField>
@@ -79,7 +83,11 @@ export const Confirmation: Story = {
         id="confirmation-input"
       >
         <InputWithAction>
-          <Input value={value} onChange={setValue} id="confirmation-input" />
+          <Input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            id="confirmation-input"
+          />
 
           <Button variant="secondary" onClick={() => setValue("")}>
             Cancel
@@ -107,7 +115,11 @@ export const LoadingAction: Story = {
 
     return (
       <InputWithAction>
-        <Input value={value} onChange={setValue} id="loading-action-input" />
+        <Input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          id="loading-action-input"
+        />
         <Button isLoading={loading} onClick={handleClick}>
           Submit
         </Button>

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { FormField } from "./formField";
-import styles from "./formField.module.sass";
+import { FormField } from "@/components/formField/formField";
+import styles from "@/components/formField/formField.module.sass";
 
 describe("FormField", () => {
   it("renders label", () => {
