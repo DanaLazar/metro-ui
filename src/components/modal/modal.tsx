@@ -21,9 +21,10 @@ export const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles["metro-modal-overlay"]}>
+    <div className={styles["metro-modal-overlay"]} onClick={onClose}>
       <div
         className={styles["metro-modal"]}
+        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}

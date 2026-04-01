@@ -26,13 +26,14 @@ npm run storybook
 ```
 
 ## Decizii arhitecturale
+
 - TypeScript pentru tipare stricte și siguranță în folosirea componentelor
 - SASS modules pentru control si independenta
 - Stories cu Storybook pentru vizualizare și test manual
 - Componente independente, fără dependențe inutile
 - States suportate: disabled, loading, error (unde este relevant)
 - Înainte de build se rulează automat:
-✅ ESLint → cod curat
-🎨 Prettier → format consistent
-🔍 TypeScript check → fără erori
-🧪 Vitest → testele trec
+  ✅ ESLint → cod curat
+  🎨 Prettier → format consistent
+  🔍 TypeScript check → fără erori
+  🧪 Vitest → testele trec
